@@ -533,11 +533,16 @@ footer {
   }
   to {
     opacity: 0;
-    transform: translateY(150px);
+    transform: translateY(-150px);
   }
 }
 
 .modal-closing {
   animation-name: modalclose;
   animation-duration: var(--modal-duration);
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
 }
