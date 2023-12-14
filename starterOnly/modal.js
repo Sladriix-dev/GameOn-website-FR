@@ -20,9 +20,18 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+// Fonction pour fermer la modale
+function closeModal() {
+  const content = document.querySelector('.content');
+  content.classList.add('modal-closing');
+  
+  function handleAnimationEnd() {
+    modalbg.style.display = 'none';
+    content.classList.remove('modal-closing'); // Retire la classe pour permettre une réouverture propre
+    content.removeEventListener('animationend', handleAnimationEnd);
+  }
+
+  content.addEventListener('animationend', handleAnimationEnd);
+}
 // close modal event
 closeBtn.addEventListener("click", closeModal);
-// close modal form
-function closeModal() {
-  modalbg.style.display = "none"
-}
