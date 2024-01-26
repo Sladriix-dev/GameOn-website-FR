@@ -88,6 +88,12 @@ img {
     display: block;
     text-align: left;
   }
+
+  .bground .content {
+    margin: 90px 0 0 0;
+    height: 89%;
+    max-width: 100%;
+  }
 }
 
 
