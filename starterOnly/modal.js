@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close")
+const btnSubmit = document.querySelector(".btn-submit");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -24,7 +25,7 @@ function launchModal() {
 function closeModal() {
   const content = document.querySelector('.content');
   content.classList.add('modal-closing');
-  
+  // Animation lorsque l'utilisateur quitte la modal
   function handleAnimationEnd() {
     modalbg.style.display = 'none';
     content.classList.remove('modal-closing'); // Retire la classe pour permettre une réouverture propre
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// Sauvegarde les données entrées par le user en local
 function saveFormData() {
   const formData = {
     first: document.getElementById('first').value,
@@ -65,6 +67,7 @@ function saveFormData() {
   localStorage.setItem('formData', JSON.stringify(formData));
 }
 
+// Restaure les données du formulaire si des données sont save en local
 function restoreFormData() {
   const savedData = JSON.parse(localStorage.getItem('formData'));
   if (savedData) {
@@ -83,7 +86,7 @@ function restoreFormData() {
   }
 }
 
-
+// Ensemble des vérifications pour submit le formulaire
 function validate() {
   let isValid = true;
 
@@ -132,9 +135,16 @@ function validate() {
     isValid = false;
   }
 
-  if (isValid) {
+  if (isValid == true) {
     localStorage.removeItem('formData'); // Nettoyer localStorage
+    closeModal();
+    document.getElementById('confirmation-modal').classList.remove('hidden');
+    return false;
   }
+  return false;
+}
 
-  return isValid;
+// Ferme la modal de confirmation d'envoie du formulaire
+function closeConfirmationModal() {
+  document.getElementById('confirmation-modal').classList.add('hidden')
 }

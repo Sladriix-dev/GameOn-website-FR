@@ -50,12 +50,14 @@
         je m'inscris
       </button>
     </div>
-
-    <div class="bground">
+    <div class="bground">      
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+          <form name="reserve" id="reserve" action="index.html" method="get" onsubmit="return validate();">
+            
+
+            <!-- Formulaire -->
             <div class="formData">
               <label for="first">Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" minlength="2" /><span id="error-first" class="error-message"></span><br>
@@ -127,6 +129,14 @@
             <input class="btn-submit" type="submit" class="button" value="C'est parti" />
           </form>
         </div>
+      </div>
+    </div>
+    <!-- Modal de confirmation -->
+    <div id="confirmation-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeConfirmationModal()">&times;</span>
+        <h2>Merci pour votre inscription</h2>
+        <button id="close-modal-btn" onclick="closeConfirmationModal()">Fermer</button>
       </div>
     </div>
   </main>
